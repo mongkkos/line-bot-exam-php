@@ -12,7 +12,30 @@ $arrPostData = array();
 $arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
 $arrPostData['messages'][0]['type'] = "text";
 $arrPostData['messages'][0]['text'] = "เฌอปรางคะ สวัสดีโอตะ";
-
+)
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่สอนเป็ด';
+  }
+}else{
+  if($isData >0){
+   foreach($data as $rec){
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = $rec->answer;
+   }
+  }else{
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'ก๊าบบ คุณสามารถสอนให้ฉลาดได้เพียงพิมพ์: สอนเป็ด[คำถาม|คำตอบ]';
+  }
+}
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$strUrl);
