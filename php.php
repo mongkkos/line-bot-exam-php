@@ -8,7 +8,7 @@
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$accessToken}";
     
-    //รับข้อความจากผู้ใช้
+    //'Ub02584573617660964d9d0ccf0469706';
     $message = $arrayJson['events'][0]['message']['text'];
 #ตัวอย่าง Message Type "Text"
     if($message == "สวัสดี"){
