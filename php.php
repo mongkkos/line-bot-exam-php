@@ -1,5 +1,7 @@
 <?php
 
+
+
 require "vendor/autoload.php";
 
 $access_token = 'P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs/TMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFvCre6mNsH8RyX1l9sjRvDqZ7rAMw1DOk4XiUH39ugsQdB04t89/1O/w1cDnyilFU=';
@@ -13,6 +15,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('เฌอปรางคะ สวัสดีโอตะ');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
+
 
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
