@@ -1,37 +1,17 @@
 <?php
  
-$strAccessToken = "P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs/TMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFvCre6mNsH8RyX1l9sjRvDqZ7rAMw1DOk4XiUH39ugsQdB04t89/1O/w1cDnyilFU";
+$strAccessToken = "P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs/TMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFvCre6mNsH8RyX1l9sjRvDqZ7rAMw1DOk4XiUH39ugsQdB04t89/1O/w1cDnyilFU=";
  
-$content = file_get_contents('php://input');
-$arrJson = json_decode($content, true);
- 
-$strUrl = "https://api.line.me/v2/bot/message/reply";
+$strUrl = "https://api.line.me/v2/bot/message/push";
  
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
-if($arrJson['events'][0]['message']['text'] == "สวัสดี"){
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "สวัสดี ID คุณคือ ".$arrJson['events'][0]['source']['userId'];
-}else if($arrJson['events'][0]['message']['text'] == "ชื่ออะไร"){
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันยังไม่มีชื่อนะ";
-}else if($arrJson['events'][0]['message']['text'] == "ทำอะไรได้บ้าง"){
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันทำอะไรไม่ได้เลย คุณต้องสอนฉันอีกเยอะ";
-}else{
-  $arrPostData = array();
-  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
-}
+$arrPostData = array();
+$arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
+$arrPostData['messages'][0]['type'] = "text";
+$arrPostData['messages'][0]['text'] = "นี้คือการทดสอบ Push Message";
  
  
 $ch = curl_init();
