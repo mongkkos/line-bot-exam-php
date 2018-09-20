@@ -10,4 +10,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('เฌอปรางคะ สวัสดีโอตะ');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('หายแล้ว');
+$response = $bot->pushMessage($pushID, $textMessageBuilder='บายดี);
+
+
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
