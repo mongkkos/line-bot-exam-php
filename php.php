@@ -8,6 +8,10 @@ $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
+$arrPostData = array();
+$arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
+$arrPostData['messages'][0]['type'] = "text";
+$arrPostData['messages'][0]['text'] = "นี้คือการทดสอบ Push Message";
 
 if($arrJson['events'][0]['message']['text'] == "สวัสดี"){
   $arrPostData = array();
