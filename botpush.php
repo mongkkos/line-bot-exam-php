@@ -16,24 +16,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('เฌอปรางคะ สวัสดีโอตะ');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
-{
-	"events" : [
-		{
-			"type" : "message",
-			"replyToken" : ($access_token);
-			"source" : {
-				"userId" : ($pushID);
-				"type" : "user"
-			},
-			"timestamp" : 1486930709120,
-			"message" : {
-				"type" : "text",
-				"id" : "5638..645..8",
-				"text" : "dddd"
-			}
-		}
-	]
-}
+
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
