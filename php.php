@@ -10,14 +10,9 @@ $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
 $arrPostData = array();
 $arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
-$arrPostData['messages'][0]['type'] = "text";
-$arrPostData['messages'][0]['text'] = "เฌอปรางคะ สวัสดีโอตะ";
-}
-$arrPostData = array();
-$arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
 $arrPostData['messages'][0]['type'] = "สบายดี";
-$arrPostData['messages'][0]['text'] = "สบายจ้า";
-   
+$arrPostData['messages'][0]['text'] = "เฌอปรางคะ สวัสดีโอตะ";
+
    
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$strUrl);
