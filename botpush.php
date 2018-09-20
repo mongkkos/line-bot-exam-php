@@ -8,11 +8,13 @@ $access_token = 'P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs
 
 $channelSecret = 'ad20a90033746dbfdb5aab77f32e7e9a';
 
+$pushID = 'Ub02584573617660964d9d0ccf0469706';
+
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('ดีจ้าฉันชื่อเจน ถามแผนเหรอคะ');
-$response = $bot->pushMessage('Ub02584573617660964d9d0ccf0469706', $textMessageBuilder);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+$response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
