@@ -1,23 +1,12 @@
-<?php
-
-$strAccessToken = "<Channel Access Token Line>";
-
+<?php // callback.php
+require "vendor/autoload.php";
+require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+$access_token = 'P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs/TMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFvCre6mNsH8RyX1l9sjRvDqZ7rAMw1DOk4XiUH39ugsQdB04t89/1O/w1cDnyilFU=';
+// Get POST body content
 $content = file_get_contents('php://input');
-$arrJson = json_decode($content, true);
-
-$strUrl = "https://api.line.me/v2/bot/message/reply";
-
-$arrHeader = array();
-$arrHeader[] = "Content-Type: application/json";
-$arrHeader[] = "Authorization: Bearer {$strAccessToken}";
-$_msg = $arrJson['events'][0]['message']['text'];
-
-
-$api_key="<MLAB APIKEY>";
-$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
-$data = json_decode($json);
-$isData=sizeof($data);
+// Parse JSON
+$events = json_decode($content, true);
+// Validate parsed JSON data
 
 if (strpos($_msg, 'สอนเป็ด') !== false) {
   if (strpos($_msg, 'สอนเป็ด') !== false) {
