@@ -13,11 +13,6 @@ $arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
 $arrPostData['messages'][0]['type'] = "text";
 $arrPostData['messages'][0]['text'] = "เฌอปรางคะ สวัสดีโอตะ";
 
-$arrPostData = array();
-$arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
-$arrPostData['messages'][0]['type'] = "สวัสดี";
-$arrPostData['messages'][0]['text'] = "ว่าไงคะ";
-
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$strUrl);
