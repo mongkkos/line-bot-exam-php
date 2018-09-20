@@ -8,10 +8,11 @@ $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
-$arrPostData = array();
-$arrPostData['to'] = "Ub02584573617660964d9d0ccf0469706";
-$arrPostData['messages'][0]['type'] = "สบายดี";
-$arrPostData['messages'][0]['text'] = "เฌอปรางคะ สวัสดีโอตะ";
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
+
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('เฌอปรางคะ สวัสดีโอตะ');
+$response = $bot->pushMessage($pushID, $textMessageBuilder);
 
    
 $ch = curl_init();
