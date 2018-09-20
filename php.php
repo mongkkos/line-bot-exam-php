@@ -14,8 +14,9 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('เฌอปรางคะ สวัสดีโอตะ');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
-
-    if($message == "สวัสดี"){
+ 
+}
+       if($message == "สวัสดี"){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
