@@ -15,7 +15,10 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("เฌอปรางคะ สวัสดีโอตะ");
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
-
+if ($response->isSucceeded()) {
+    echo 'Succeeded!';
+    return;
+}
 
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
