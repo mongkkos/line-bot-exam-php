@@ -11,7 +11,7 @@ $channelSecret = 'ad20a90033746dbfdb5aab77f32e7e9a';
 $pushID = 'Ub02584573617660964d9d0ccf0469706';
 
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("เฌอปรางคะ สวัสดีโอตะ");
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("gm");
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 
