@@ -13,7 +13,7 @@ $pushID = 'Ub02584573617660964d9d0ccf0469706';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('งง');
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("งง");
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 
