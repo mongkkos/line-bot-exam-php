@@ -11,7 +11,7 @@ $channelSecret = 'ad20a90033746dbfdb5aab77f32e7e9a';
 $pushID = 'Ub02584573617660964d9d0ccf0469706';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-$bot = new \LINE\LINEBot($httpClient, ["สวัสดี" => $channelSecret]);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("เฌอปรางคะ สวัสดีโอตะ");
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
