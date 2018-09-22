@@ -20,6 +20,8 @@ if ($response->isSucceeded()) {
     return;
 }
 
+$outputText = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("text message");
+$bot->replyMessage($event->getReplyToken(), $outputText);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
