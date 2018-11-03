@@ -1,23 +1,42 @@
 <?php
+require_once __DIR__ . '/lineBot.php';
+require_once __DIR__ . '/connect.php';
+$bot   = new Linebot();
+$text  = $bot->getMessageText();
 
-require "vendor/autoload.php";
+// แบ่งคำด้วยช่องว่า
+$textArray = explode(" ", trim($text));
 
-$access_token = 'P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs/TMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFvCre6mNsH8RyX1l9sjRvDqZ7rAMw1DOk4XiUH39ugsQdB04t89/1O/w1cDnyilFU=';
+$ans = "";
+if (sizeof($textArray) == 1)
+{
+	// กรณีส่งมาคำเดียว เช่น "A"
+	$query = mysqli_query($conn, "select * from incomingreport where Code = '". $textArray[0] . "'");
+	if (mysqli_num_rows($query) > 0) {
+		while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+			$ans .= $row["Incoming date"] ." | ". $row["Channel"] . " | " .$row["Quantity"] ." แผ่น". "\n";
+		}
+	} else {
+		$ans = "ขอโทษค่ะ ฉันไม่รู้ว่าคุณหมายความว่าอย่างไร"."\n"."กรุณาพิมพ์ Code"."\n"."หรือ Code Channel ค่ะ";
+	}
 
-$channelSecret = 'ad20a90033746dbfdb5aab77f32e7e9a';
+}
+else
+{
+	// กรณีส่งมาสองคำ เช่น "A export"
+	$query = mysqli_query($conn, "select * from incomingreport where Code = '" . $textArray[0] . "' and Channel = '" . $textArray[1] . "'");
+	if (mysqli_num_rows($query) > 0) {
+		while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+			$ans .= $row["Incoming date"] . " | " . $row["Quantity"] ." แผ่น". "\n";
+		}
+	} else {
+		$ans = "ขอโทษค่ะ ฉันไม่รู้ว่าคุณหมายความว่าอย่างไร"."\n"."กรุณาพิมพ์ Code หรือ Code Channel ค่ะ" ;
+	}
+}
 
-$pushID = 'Ub02584573617660964d9d0ccf0469706';
 
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
- 
-
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("เฌอปรางคะ สวัสดีโอตะ");
-$response = $bot->pushMessage($pushID, $textMessageBuilder);
- 
-
-
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+$bot->reply($ans);
+?>
 
 
 
