@@ -1,20 +1,22 @@
 <?php
+class Setting {
+	public function getChannelAccessToken(){
+		$channelAccessToken = "nFJejpIg7ijcj6JqFENZXoiGkpfPwPmrZkDtukb00yitblMnEWgAY80jKzNNPUGATMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFuenNIZkSD6mPX1H940+lUD4AbCMeBCkwEbr8NnU/1PQdB04t89/1O/w1cDnyilFU=";
+		return $channelAccessToken;
+	}
+	public function getChannelSecret(){
+		$channelSecret = "
+db5a52cc0a1277884b3702883fb29f17
 
-
-$access_token = 'P+XQxskXjlglPW1w7JPk28AssQdJfHmv05voI1Lg+DiTMNZA3kMKHA/nRjzPhjs/TMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFvCre6mNsH8RyX1l9sjRvDqZ7rAMw1DOk4XiUH39ugsQdB04t89/1O/w1cDnyilFU=';
-
-$userId = 'Uffa138efe037e6e889d0b0f4a871c005';
-
-$url = 'https://api.line.me/v2/bot/profile/'.$userId;
-
-$headers = array('Authorization: Bearer ' . $access_token);
-
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-$result = curl_exec($ch);
-curl_close($ch);
-
-echo $result;
-
+";
+		return $channelSecret;
+	}
+	public function getApiReply(){
+		$api = "https://api.line.me/v2/bot/message/reply";
+		return $api;
+	}
+	public function getApiPush(){
+		$api = "https://api.line.me/v2/bot/message/push";
+		return $api;
+	}
+}
