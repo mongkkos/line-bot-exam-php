@@ -1,22 +1,16 @@
 <?php
-class Setting {
-	public function getChannelAccessToken(){
-		$channelAccessToken = "nFJejpIg7ijcj6JqFENZXoiGkpfPwPmrZkDtukb00yitblMnEWgAY80jKzNNPUGATMbsRtoavduuKbKXJMtFRtKDD/eu64PFjcoLJsbGnSFuenNIZkSD6mPX1H940+lUD4AbCMeBCkwEbr8NnU/1PQdB04t89/1O/w1cDnyilFU=";
-		return $channelAccessToken;
-	}
-	public function getChannelSecret(){
-		$channelSecret = "
-db5a52cc0a1277884b3702883fb29f17
+$server = "localhost"; // change according to your server
+$username = "root"; // change according to your username
+$password = ""; // change according to your password
+$db_name = "linebot"; // replace something in your database name
+// $ db = mysql_connect ($ server, $ username, $ password) or DIE ('connection to database failed !!');
+// mysql_select_db ($ db_name, $ db) or DIE ('no database name !!');
+$conn = mysqli_connect ($server, $username, $password, $db_name);
 
-";
-		return $channelSecret;
-	}
-	public function getApiReply(){
-		$api = "https://api.line.me/v2/bot/message/reply";
-		return $api;
-	}
-	public function getApiPush(){
-		$api = "https://api.line.me/v2/bot/message/push";
-		return $api;
-	}
-}
+// Check connection
+if (mysqli_connect_errno ())
+  {
+  echo "Failed to connect to MySQL:". mysqli_connect_error ();
+  }
+ $conn->set_charset("utf8");
+  ?>
